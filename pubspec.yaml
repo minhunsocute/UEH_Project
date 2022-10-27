@@ -40,6 +40,10 @@ dependencies:
   calendar_view: ^1.0.0
   shared_preferences: ^2.0.15
   modal_bottom_sheet: ^2.1.2
+  animated_bottom_navigation_bar: ^1.1.0
+  intl: ^0.17.0
+  scrollable_positioned_list: ^0.3.5
+  fl_chart: ^0.55.2
 
 dev_dependencies:
   flutter_test:

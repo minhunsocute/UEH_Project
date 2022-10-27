@@ -61,7 +61,9 @@ class SignInScreen extends StatelessWidget {
                 hintText: 'Password',
               ),
               const SizedBox(height: 20),
-              CustomButton(text: 'Logn In', onTap: () {}),
+              CustomButton(
+                  text: 'Logn In',
+                  onTap: () => Get.toNamed(RouteNames.dashboardScreen)),
               const SizedBox(height: 10),
               Align(
                 alignment: Alignment.center,
