@@ -5,6 +5,7 @@ import 'package:ueh_project/features/staff/home_screen/screens/home_screen.dart'
 import 'package:ueh_project/features/staff/skill_screen.dart/screens/skill_screen.dart';
 
 import '../../../../constants/app_color.dart';
+import '../../profile/screens/profile_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -26,7 +27,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           HomeScreen(),
           CalenderScreen(),
           SkillScreen(),
-          const Center(child: Text('1')),
+          ProfileScreen(),
         ],
       ),
       floatingActionButton: FloatingActionButton(

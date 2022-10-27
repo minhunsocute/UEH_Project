@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ueh_project/constants/app_color.dart';
 import 'package:ueh_project/widgets/custom_button.dart';
 
+import '../../../../routes/route_name.dart';
 import '../../../../widgets/skill_improve_card.dart';
 import '../../../../widgets/task_card.dart';
 
@@ -49,7 +50,7 @@ class HomeScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           InkWell(
-            onTap: () {},
+            onTap: () => Get.toNamed(RouteNames.notification_screen),
             child: const Icon(Icons.notifications_outlined,
                 color: AppColors.textColor),
           ),
