@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ueh_project/features/staff/skill_screen.dart/screens/message_screen.dart';
 
 import '../../../../constants/app_color.dart';
 
@@ -97,11 +98,14 @@ class SkillScreen extends StatelessWidget {
                   )
                 : Column(
                     children: [
-                      MessItem(
-                        image: 'assets/images/person.png',
-                        name: 'Nguyen Minh Hung',
-                        lassMessage: 'Hello Bro! Nice to meet you',
-                        time: DateTime.now(),
+                      InkWell(
+                        onTap: () => Get.to(() => MessPersonScreen()),
+                        child: MessItem(
+                          image: 'assets/images/person.png',
+                          name: 'Nguyen Minh Hung',
+                          lassMessage: 'Hello Bro! Nice to meet you',
+                          time: DateTime.now(),
+                        ),
                       ),
                       MessItem(
                         image: 'assets/images/person1.png',

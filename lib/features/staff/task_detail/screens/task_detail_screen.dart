@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:ueh_project/constants/fake_data.dart';
+import 'package:ueh_project/widgets/custom_text_field.dart';
 
 import '../../../../constants/app_color.dart';
 import '../../../../widgets/custom_button.dart';
@@ -18,7 +20,15 @@ class TaskDetailScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(20.0),
         child: CustomButton(
-            text: 'Delete Task', onTap: () {}, backgroundColor: Colors.red),
+            text: 'Delete Task',
+            onTap: () async {
+              await showModalBottomSheet(
+                backgroundColor: Colors.transparent,
+                context: context,
+                builder: (builder) => BottomDelete(),
+              );
+            },
+            backgroundColor: Colors.red),
       ),
       appBar: AppBar(
         elevation: 0,
@@ -170,7 +180,7 @@ class TaskDetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            func: () {},
+            func: () => Get.to(() => EditCategory()),
             icon: Icons.document_scanner_outlined,
           ),
         ],
@@ -219,6 +229,238 @@ class RowDataItem extends StatelessWidget {
               child: data,
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class EditCategory extends StatelessWidget {
+  const EditCategory({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: CustomButton(text: 'Update', onTap: () {}),
+      ),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: InkWell(
+          onTap: () => Get.back(),
+          child: const Icon(Icons.close, color: AppColors.textColor),
+        ),
+        title: const Text(
+          'Edit Category',
+          style: TextStyle(
+            color: AppColors.textColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 22.0,
+          ),
+        ),
+      ),
+      body: ListView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        children: [
+          SizedBox(
+            width: double.infinity,
+            height: 300.0,
+            child: GridView.count(
+              primary: false,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
+              crossAxisCount: 3,
+              children: [
+                ...FakeData().listCategory.map(
+                      (e) => Column(
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 100,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5.0),
+                              color: e['color2'],
+                            ),
+                            child: Icon(
+                              e['icon'],
+                              color: e['color1'],
+                            ),
+                          ),
+                          // const SizedBox(height: 10.0),
+                          Text(
+                            e['title'],
+                            style: const TextStyle(
+                                color: AppColors.textColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17.0),
+                          )
+                        ],
+                      ),
+                    ),
+                InkWell(
+                  onTap: () => Get.to(() => AddCategory()),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          color: Colors.yellow.withOpacity(0.6),
+                        ),
+                        child: const Icon(
+                          Icons.add,
+                          color: Colors.yellow,
+                        ),
+                      ),
+                      // const SizedBox(height: 10.0),
+                      const Text(
+                        'Add',
+                        style: TextStyle(
+                            color: AppColors.textColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17.0),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class AddCategory extends StatelessWidget {
+  AddCategory({super.key});
+  final _nameCateController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: CustomButton(text: 'Add', onTap: () {}),
+      ),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: InkWell(
+          onTap: () => Get.back(),
+          child: const Icon(Icons.close, color: AppColors.textColor),
+        ),
+        title: const Text(
+          'Add New Category',
+          style: TextStyle(
+            color: AppColors.textColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 22.0,
+          ),
+        ),
+      ),
+      body: ListView(
+        physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+        ),
+        children: [
+          const SizedBox(height: 10.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(children: [
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Category Name',
+                  style: TextStyle(
+                    color: AppColors.textColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              CustomTextField(
+                controller: _nameCateController,
+                hintText: 'Category Name',
+                icon: Icons.category,
+              ),
+              const SizedBox(height: 10.0),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Category Icon',
+                  style: TextStyle(
+                    color: AppColors.textColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: InkWell(
+                  onTap: () {},
+                  child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10.0),
+                      decoration: BoxDecoration(
+                        color: AppColors.colorBlack1.withOpacity(0.6),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: const Text(
+                        'Choose Icon',
+                        style: TextStyle(
+                            color: AppColors.textColor,
+                            fontWeight: FontWeight.bold),
+                      )),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Category Color',
+                  style: TextStyle(
+                    color: AppColors.textColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+            ]),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                ...FakeData().listColor.map(
+                      (e) => InkWell(
+                        onTap: () {},
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          margin: const EdgeInsets.only(left: 10.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: e.withOpacity(0.8),
+                          ),
+                        ),
+                      ),
+                    )
+              ],
+            ),
+          )
         ],
       ),
     );
@@ -417,6 +659,89 @@ class _EditTimeState extends State<EditTime> {
                   },
                 ),
               )),
+        ],
+      ),
+    );
+  }
+}
+
+class BottomDelete extends StatelessWidget {
+  BottomDelete({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 230,
+      // padding: const EdgeInsets.all(10.0),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
+        ),
+        color: AppColors.colorBlack1,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(height: 10),
+          Container(
+            width: 80,
+            height: 5,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: AppColors.textColor.withOpacity(0.2),
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Text(
+            'Delete Task',
+            style: TextStyle(
+                color: Colors.red, fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          const SizedBox(height: 10),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: Divider(color: AppColors.textColor),
+          ),
+          const SizedBox(height: 10.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: Align(
+              alignment: Alignment.center,
+              child: Text('Are you sure you want to Delete?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: AppColors.textColor,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14)),
+            ),
+          ),
+          const SizedBox(height: 10),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: Divider(color: AppColors.textColor),
+          ),
+          const SizedBox(height: 10.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: CustomButton(
+                    text: 'Cancle',
+                    onTap: () => Get.back(),
+                    backgroundColor: AppColors.colorBlack1,
+                    color: Colors.purple,
+                  ),
+                ),
+                const SizedBox(width: 10.0),
+                Expanded(child: CustomButton(text: 'Delete', onTap: () {}))
+              ],
+            ),
+          ),
         ],
       ),
     );
