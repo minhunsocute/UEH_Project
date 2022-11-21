@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants/app_color.dart';
+
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
@@ -18,7 +20,7 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? Colors.purple,
+        backgroundColor: backgroundColor ?? AppColors.primaryColor,
         minimumSize: const Size(double.infinity, 50),
       ),
       child: Text(

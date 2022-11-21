@@ -18,7 +18,7 @@ class SkillScreen extends StatelessWidget {
         title: Obx(
           () => Text(
             checkPage.value == 0 ? 'List Skills to improve' : 'Message',
-            style: TextStyle(
+            style: const TextStyle(
                 color: AppColors.textColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0),
@@ -42,7 +42,8 @@ class SkillScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.0),
-              color: AppColors.colorBlack1.withOpacity(0.6),
+              color: Colors.white,
+              boxShadow: AppColors.shadowWidget,
               border: Border.all(
                 width: 1,
                 color: AppColors.textColor,
@@ -230,7 +231,8 @@ class SkillImproveCard1 extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        color: AppColors.colorBlack1.withOpacity(0.6),
+        boxShadow: AppColors.shadowWidget,
+        color: Colors.white,
       ),
       child: Row(
         children: [

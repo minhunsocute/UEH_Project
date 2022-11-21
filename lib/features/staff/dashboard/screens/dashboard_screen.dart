@@ -38,8 +38,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 68, 64, 64),
-        activeColor: Colors.white,
+        backgroundColor: Colors.white,
+        activeColor: AppColors.primaryColor,
         inactiveColor: Colors.grey,
         icons: const [
           Icons.home,

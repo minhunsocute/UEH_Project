@@ -16,7 +16,7 @@ class AppHeader extends StatelessWidget {
           alignment: Alignment.center,
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
-            color: Colors.purple.withOpacity(0.3),
+            color: AppColors.primaryColor.withOpacity(0.3),
             borderRadius: BorderRadius.circular(5),
           ),
           child: Image.asset('assets/images/app_icon.png'),
@@ -37,7 +37,7 @@ class AppHeader extends StatelessWidget {
                 text: 'Todo App',
                 style: TextStyle(
                     // fontFamily: 'Montserrat',
-                    color: Colors.purple,
+                    color: AppColors.primaryColor,
                     decoration: TextDecoration.underline),
               )
             ],

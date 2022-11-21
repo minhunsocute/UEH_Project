@@ -19,12 +19,13 @@ class SkillImproveCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 230,
-      height: 150,
-      margin: const EdgeInsets.only(left: 20.0),
+      height: 160,
+      margin: const EdgeInsets.only(left: 20.0, top: 10.0, bottom: 10.0),
       padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
+        boxShadow: AppColors.shadowWidget,
         borderRadius: BorderRadius.circular(10.0),
-        color: AppColors.colorBlack1.withOpacity(0.6),
+        color: Colors.white,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

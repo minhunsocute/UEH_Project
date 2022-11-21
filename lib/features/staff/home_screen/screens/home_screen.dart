@@ -109,11 +109,17 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.0),
-              color: AppColors.colorBlack1.withOpacity(0.6),
+              color: AppColors.backgroundColor,
               border: Border.all(
                 width: 1,
                 color: AppColors.textColor,
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.textColor.withOpacity(0.4),
+                  blurRadius: 4.0,
+                )
+              ],
             ),
             child: Row(
               children: [
@@ -238,7 +244,7 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(height: 20.0),
           SizedBox(
             width: double.infinity,
-            height: 150,
+            height: 170,
             child: ListView(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(

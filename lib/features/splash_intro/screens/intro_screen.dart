@@ -117,18 +117,11 @@ class _IntroScreenState extends State<IntroScreen> {
                           onButtonTape(0);
                         } else if (_currentIndex == 2) {
                           onButtonTape(1);
-                        } else {
-                          // Get.to(
-                          //   () => SignInScreen(),
-                          //   transition: Transition.rightToLeft,
-                          //   duration: const Duration(milliseconds: 300),
-                          // );
-                          // Get.toNamed(RouteNames.signInScreen);
-                        }
+                        } else {}
                       });
                     },
-                    backgroundColor: Colors.transparent,
-                    color: Colors.purple,
+                    backgroundColor: Colors.white,
+                    color: AppColors.primaryColor,
                   ),
                 ),
                 const SizedBox(width: 10.0),
@@ -142,11 +135,6 @@ class _IntroScreenState extends State<IntroScreen> {
                             } else if (_currentIndex == 1) {
                               onButtonTape(2);
                             } else {
-                              // Get.to(
-                              //   () => SignInScreen(),
-                              //   transition: Transition.rightToLeft,
-                              //   duration: const Duration(milliseconds: 300),
-                              // );
                               Get.toNamed(RouteNames.signInScreen);
                             }
                           });
@@ -168,7 +156,9 @@ class _IntroScreenState extends State<IntroScreen> {
       margin: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
         //container with border
-        color: isActive ? Colors.purple : Colors.purple.withOpacity(0.2),
+        color: isActive
+            ? AppColors.primaryColor
+            : AppColors.primaryColor.withOpacity(0.2),
         borderRadius: const BorderRadius.all(Radius.circular(12)),
         boxShadow: const [
           BoxShadow(color: Colors.black38, offset: Offset(2, 3), blurRadius: 3)
