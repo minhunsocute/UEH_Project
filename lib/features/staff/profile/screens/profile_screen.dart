@@ -226,7 +226,7 @@ class ProfileScreen extends StatelessWidget {
                         top: -45,
                         start: (Get.mediaQuery.size.width - 40) / 2 - 45,
                       ),
-                      badgeColor: AppColors.colorBlack1,
+                      badgeColor: Colors.white,
                       padding: const EdgeInsets.all(10),
                       stackFit: StackFit.passthrough,
                       elevation: 0,
@@ -263,7 +263,7 @@ class ProfileScreen extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 18, vertical: 20),
                             decoration: BoxDecoration(
-                              color: AppColors.colorBlack1.withOpacity(0.6),
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Column(
@@ -399,7 +399,8 @@ class TempleteField extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: AppColors.colorBlack1.withOpacity(0.6),
+        boxShadow: AppColors.shadowWidget,
+        color: Colors.white,
       ),
       child: child,
     );

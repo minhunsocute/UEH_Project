@@ -109,11 +109,11 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.0),
-              color: AppColors.backgroundColor,
-              border: Border.all(
-                width: 1,
-                color: AppColors.textColor,
-              ),
+              color: Colors.white,
+              // border: Border.all(
+              //   width: 1,
+              //   color: AppColors.textColor,
+              // ),
               boxShadow: [
                 BoxShadow(
                   color: AppColors.textColor.withOpacity(0.4),

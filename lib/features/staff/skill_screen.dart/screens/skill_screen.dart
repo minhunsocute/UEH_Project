@@ -44,10 +44,6 @@ class SkillScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.0),
               color: Colors.white,
               boxShadow: AppColors.shadowWidget,
-              border: Border.all(
-                width: 1,
-                color: AppColors.textColor,
-              ),
             ),
             child: Row(
               children: [

@@ -52,7 +52,7 @@ class _IntroScreenState extends State<IntroScreen> {
       ),
     ];
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -214,7 +214,7 @@ class MainPageViewIntro extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                color: Colors.white,
+                color: Colors.grey,
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
               ),

@@ -18,7 +18,7 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const AppHeader(),
         elevation: 0,
@@ -44,7 +44,7 @@ class SignInScreen extends StatelessWidget {
                 'Login to your account',
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.textColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                 ),

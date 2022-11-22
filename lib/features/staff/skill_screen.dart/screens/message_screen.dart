@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../constants/app_color.dart';
+import '../widgets/recieve_card.dart';
+import '../widgets/send_card.dart';
 
 class MessPersonScreen extends StatelessWidget {
   MessPersonScreen({super.key});
@@ -62,20 +64,27 @@ class MessPersonScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor.withOpacity(0.2),
+      extendBodyBehindAppBar: true,
+      backgroundColor: AppColors.primaryColor[300],
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColors.textColor.withOpacity(0.2),
+        backgroundColor: AppColors.primaryColor[300],
         leading: InkWell(
           onTap: () => Get.back(),
           child: Container(
             alignment: Alignment.center,
-            height: 50,
+            height: 40,
             width: 50,
-            margin: const EdgeInsets.all(15),
+            margin: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: AppColors.primaryColor.withOpacity(0.7),
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.textColor.withOpacity(0.3),
+                  blurRadius: 5.0,
+                ),
+              ],
             ),
             child: const Icon(
               Icons.arrow_back_ios,
@@ -99,7 +108,7 @@ class MessPersonScreen extends StatelessWidget {
             const SizedBox(height: 4),
             Container(
               decoration: BoxDecoration(
-                color: Colors.green.withOpacity(0.5),
+                color: Colors.green[200],
                 borderRadius: BorderRadius.circular(20),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
@@ -133,10 +142,25 @@ class MessPersonScreen extends StatelessWidget {
       ),
       body: Stack(
         children: <Widget>[
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            color: AppColors.primaryColor[300],
+          ),
           Obx(
             () => Container(
               decoration: const BoxDecoration(
-                color: AppColors.backgroundColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.textColor,
+                    blurRadius: 10.0,
+                  ),
+                ],
+                color: Colors.white,
               ),
               child: ListView(
                 physics: const BouncingScrollPhysics(
@@ -175,7 +199,7 @@ class MessPersonScreen extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: 70,
-        color: AppColors.backgroundColor,
+        color: Colors.white,
         // color: Colors.white,
         padding: const EdgeInsets.all(10),
         child: Row(
@@ -185,13 +209,19 @@ class MessPersonScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: AppColors.textColor.withOpacity(0.3),
+                  color: AppColors.backgroundColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.backgroundColor.withOpacity(0.2),
+                      blurRadius: 5.0,
+                    ),
+                  ],
                 ),
                 child: Row(
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.all(5.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: TextFormField(
                           controller: messController,
                           style: const TextStyle(
@@ -204,7 +234,7 @@ class MessPersonScreen extends StatelessWidget {
                             border: InputBorder.none,
                             hintText: 'Type Message',
                             hintStyle: TextStyle(
-                              color: AppColors.textColor,
+                              color: Colors.grey,
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
                             ),
@@ -234,11 +264,14 @@ class MessPersonScreen extends StatelessWidget {
                   onTap: () {},
                   child: Container(
                     padding: const EdgeInsets.all(10),
-                    decoration: const BoxDecoration(
-                        color: AppColors.primaryColor, shape: BoxShape.circle),
+                    decoration: BoxDecoration(boxShadow: [
+                      BoxShadow(
+                          color: AppColors.textColor.withOpacity(0.4),
+                          blurRadius: 4.0),
+                    ], color: AppColors.primaryColor, shape: BoxShape.circle),
                     child: const Icon(
                       Icons.send,
-                      color: AppColors.textColor,
+                      color: Colors.white,
                       size: 15,
                     ),
                   ),
@@ -282,207 +315,6 @@ class LocateTime extends StatelessWidget {
             fontSize: 12,
           ),
         ),
-      ),
-    );
-  }
-}
-
-class SendCard extends StatelessWidget {
-  final String title;
-  final int typeMess;
-  final DateTime time;
-  const SendCard({
-    Key? key,
-    required this.title,
-    required this.typeMess,
-    required this.time,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width * 0.72,
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-            decoration: const BoxDecoration(
-              color: AppColors.primaryColor,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25),
-                topRight: Radius.circular(25),
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(2),
-              ),
-            ),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  (typeMess == 0)
-                      ? SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.72 - 90,
-                          child: Text(
-                            title,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        )
-                      : Container(
-                          width: MediaQuery.of(context).size.width * 0.72 - 90,
-                          height: MediaQuery.of(context).size.width * 0.72 - 90,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: AssetImage(
-                                title,
-                              ),
-                            ),
-                          ),
-                        ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Icon(
-                        Icons.airplane_ticket,
-                        size: 20,
-                        color: Color.fromARGB(255, 3, 99, 177),
-                      ),
-                      Container(
-                        alignment: Alignment.bottomCenter,
-                        child: Text(
-                          DateFormat().add_jm().format(time),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(width: 20),
-        ],
-      ),
-    );
-  }
-}
-
-class ReciveCard extends StatelessWidget {
-  final String title;
-  final DateTime time;
-  final int typeMess;
-  const ReciveCard({
-    Key? key,
-    required this.title,
-    required this.typeMess,
-    required this.time,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(width: 5),
-          Container(
-            height: 25,
-            width: 25,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  'assets/images/person.png',
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(width: 5),
-          Container(
-            width: MediaQuery.of(context).size.width * 0.72,
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-            decoration: BoxDecoration(
-              color: AppColors.textColor.withOpacity(0.4),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(2),
-                topRight: Radius.circular(25),
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25),
-              ),
-            ),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.72 - 90,
-                    child: (typeMess == 0)
-                        ? Text(
-                            title,
-                            style: const TextStyle(
-                              color: AppColors.textColor,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          )
-                        : Container(
-                            width:
-                                MediaQuery.of(context).size.width * 0.72 - 90,
-                            height:
-                                MediaQuery.of(context).size.width * 0.72 - 90,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  title,
-                                ),
-                              ),
-                            ),
-                          ),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Icon(
-                        Icons.airplane_ticket,
-                        size: 20,
-                        color: Color.fromARGB(255, 3, 99, 177),
-                      ),
-                      Container(
-                        alignment: Alignment.bottomCenter,
-                        child: Text(
-                          DateFormat().add_jm().format(time),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

@@ -47,7 +47,7 @@ class CalenderScreen extends StatefulWidget {
 class _CalenderScreenState extends State<CalenderScreen> {
   late DateTime _selectedDate = DateTime.now().add(const Duration(days: 2));
   RxInt checkSwap = 0.obs;
-
+  RxBool checkPage = true.obs;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,12 +56,26 @@ class _CalenderScreenState extends State<CalenderScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        title: const Text(
-          'Calender',
-          style: TextStyle(
-              color: AppColors.textColor,
-              fontSize: 22.0,
-              fontWeight: FontWeight.bold),
+        title: Row(
+          children: [
+            Obx(
+              () => Text(
+                checkPage.value ? 'Calender ' : 'All Project ',
+                style: const TextStyle(
+                    color: AppColors.textColor,
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            InkWell(
+              onTap: () => checkPage.value = !checkPage.value,
+              child: const Icon(
+                Icons.change_circle,
+                color: AppColors.primaryColor,
+                size: 25.0,
+              ),
+            ),
+          ],
         ),
         actions: [
           InkWell(
@@ -228,7 +242,7 @@ BarChartGroupData makeGroupData(int x, double y1, double y2) {
   return BarChartGroupData(barsSpace: 4, x: x, barRods: [
     BarChartRodData(
       toY: y1,
-      color: const Color.fromARGB(255, 104, 203, 108),
+      color: Colors.blue[300],
       width: 7,
     ),
     BarChartRodData(
