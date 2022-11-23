@@ -47,6 +47,7 @@ dependencies:
   badges: ^2.0.3
   readmore: ^2.2.0
   table_calendar: ^3.0.7
+  font_awesome_flutter: ^10.2.1
 
 dev_dependencies:
   flutter_test:

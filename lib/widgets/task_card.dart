@@ -34,13 +34,35 @@ class TaskCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: AppColors.shadowWidget,
-          borderRadius: BorderRadius.circular(5.0),
+          borderRadius: BorderRadius.circular(10.0),
         ),
-        child: Row(
+        child: Column(
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          color: AppColors.textColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                      Text(
+                        cateTitle,
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Container(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 10.0, vertical: 5.0),
@@ -62,47 +84,35 @@ class TaskCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 10.0),
-                (!check)
-                    ? const Icon(Icons.check_box_outline_blank_sharp,
-                        color: AppColors.textColor)
-                    : const Icon(Icons.check_box_outlined,
-                        color: AppColors.textColor),
               ],
             ),
-            const SizedBox(width: 10.0),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      overflow: TextOverflow.ellipsis,
+            const SizedBox(height: 8.0),
+            const Divider(color: Colors.grey),
+            const SizedBox(height: 8.0),
+            Row(
+              children: [
+                const Icon(
+                  Icons.timelapse_outlined,
+                  color: AppColors.primaryColor,
+                ),
+                const SizedBox(width: 5.0),
+                Text(
+                  'Today At ${time.hour}:${time.minute}',
+                  style: const TextStyle(
                       color: AppColors.textColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                    ),
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w400),
+                ),
+                const Spacer(),
+                Text(
+                  check ? 'On Progress' : 'Open',
+                  style: TextStyle(
+                    color: check ? AppColors.primaryColor : AppColors.textColor,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
                   ),
-                  const SizedBox(height: 5.0),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.timelapse_outlined,
-                        color: AppColors.primaryColor,
-                      ),
-                      const SizedBox(width: 5.0),
-                      Text(
-                        'Today At ${time.hour}:${time.minute}',
-                        style: const TextStyle(
-                            color: AppColors.textColor,
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w400),
-                      )
-                    ],
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

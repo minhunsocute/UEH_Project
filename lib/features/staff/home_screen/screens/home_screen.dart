@@ -6,6 +6,9 @@ import 'package:ueh_project/widgets/custom_button.dart';
 import '../../../../routes/route_name.dart';
 import '../../../../widgets/skill_improve_card.dart';
 import '../../../../widgets/task_card.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../widgets/project_item.dart';
 
 List<Map<String, dynamic>> fakeTask = [
   {
@@ -144,7 +147,67 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 10.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Your Project',
+                  style: TextStyle(
+                    color: AppColors.textColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 19.0,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: const Text(
+                    'See More',
+                    style: TextStyle(
+                      color: AppColors.primaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17.0,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 200,
+            width: double.infinity,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics(),
+              ),
+              children: const [
+                ProjectListItem(
+                  mainTitle: "Nevada Project",
+                  progress: 0.8,
+                  message: 2,
+                  day: 2,
+                  checkHeader: true,
+                ),
+                ProjectListItem(
+                  mainTitle: "Endera Project",
+                  progress: 0.39,
+                  message: 2,
+                  day: 7,
+                  checkHeader: false,
+                ),
+                ProjectListItem(
+                  mainTitle: "Nevada Project",
+                  progress: 0.2,
+                  message: 2,
+                  day: 2,
+                  checkHeader: false,
+                )
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
@@ -213,7 +276,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               )),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 10.0),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
@@ -241,7 +304,6 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 20.0),
           SizedBox(
             width: double.infinity,
             height: 170,
