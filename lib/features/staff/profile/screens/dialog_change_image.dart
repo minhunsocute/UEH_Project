@@ -15,9 +15,9 @@ class DialogChangeImage extends StatelessWidget {
       width: double.infinity,
       height: Get.height / 5,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: AppColors.colorBlack1,
-      ),
+          borderRadius: BorderRadius.circular(10.0),
+          color: Colors.white,
+          boxShadow: AppColors.shadowWidget),
       child: Column(children: [
         const Align(
           alignment: Alignment.center,

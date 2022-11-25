@@ -52,7 +52,7 @@ class SkillImproveCard extends StatelessWidget {
           const SizedBox(height: 5.0),
           Text(
             description,
-            maxLines: 4,
+            maxLines: 3,
             style: const TextStyle(
               overflow: TextOverflow.ellipsis,
               color: AppColors.textColor,

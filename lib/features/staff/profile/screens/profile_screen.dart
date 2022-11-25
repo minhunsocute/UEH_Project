@@ -8,6 +8,9 @@ import 'package:ueh_project/widgets/custom_text_field.dart';
 import '../../../../constants/app_color.dart';
 import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/line_chaer_design.dart';
+import '../widgets/over.dart';
+import '../widgets/profile_item.dart';
+import '../widgets/template_field.dart';
 import 'dialog_change_image.dart';
 import 'dialog_change_name.dart';
 import 'dialog_change_password.dart';
@@ -99,7 +102,7 @@ class ProfileScreen extends StatelessWidget {
                 const Text(
                   'Settings',
                   style: TextStyle(
-                    color: AppColors.textColor,
+                    color: AppColors.primaryColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 19,
                   ),
@@ -114,7 +117,7 @@ class ProfileScreen extends StatelessWidget {
                 const Text(
                   'Accounts',
                   style: TextStyle(
-                    color: AppColors.textColor,
+                    color: AppColors.primaryColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 19,
                   ),
@@ -157,7 +160,7 @@ class ProfileScreen extends StatelessWidget {
                 const Text(
                   'Uptodo',
                   style: TextStyle(
-                    color: AppColors.textColor,
+                    color: AppColors.primaryColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 19,
                   ),
@@ -346,130 +349,6 @@ class ProfileScreen extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class ProfileItem extends StatelessWidget {
-  final String title;
-  final IconData icon;
-  final VoidCallback func;
-  const ProfileItem({
-    Key? key,
-    required this.title,
-    required this.icon,
-    required this.func,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
-      child: InkWell(
-        onTap: func,
-        child: Row(
-          children: [
-            Icon(icon, color: AppColors.textColor),
-            Text(
-              ' $title',
-              style: const TextStyle(color: AppColors.textColor, fontSize: 16),
-            ),
-            const Spacer(),
-            const Icon(Icons.arrow_forward_ios,
-                color: AppColors.textColor, size: 19.0),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class TempleteField extends StatelessWidget {
-  final Widget child;
-  const TempleteField({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        boxShadow: AppColors.shadowWidget,
-        color: Colors.white,
-      ),
-      child: child,
-    );
-  }
-}
-
-class Over extends StatelessWidget {
-  const Over({
-    Key? key,
-    required this.widthDevice,
-    required this.heightDevice,
-    required this.listView,
-  }) : super(key: key);
-
-  final double widthDevice;
-  final double heightDevice;
-  final Column listView;
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SizedBox(
-          width: widthDevice,
-          height: heightDevice,
-          child: Column(
-            children: [
-              Expanded(
-                child: Container(
-                  width: double.infinity,
-                  height: heightDevice / 2,
-                  color: AppColors.primaryColor,
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  width: double.infinity,
-                  height: heightDevice / 2,
-                  color: AppColors.backgroundColor,
-                ),
-              )
-            ],
-          ),
-        ),
-        SizedBox(
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.transparent,
-            ),
-            child: ListView(
-              physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics(),
-              ),
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                        width: double.maxFinite,
-                        decoration: const BoxDecoration(
-                          color: AppColors.backgroundColor,
-                        ),
-                        child: listView)
-                  ],
-                )
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

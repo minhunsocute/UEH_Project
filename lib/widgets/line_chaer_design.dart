@@ -110,7 +110,8 @@ class _LineChartDesignState extends State<LineChartDesign> {
     return LineChartData(
       gridData: FlGridData(
         show: true,
-        drawVerticalLine: true,
+        drawVerticalLine: false,
+        drawHorizontalLine: false,
         horizontalInterval: 1,
         verticalInterval: 1,
         getDrawingHorizontalLine: (value) {

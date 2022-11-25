@@ -19,9 +19,9 @@ class DialogChangePassword extends StatelessWidget {
       width: double.infinity,
       height: 300,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: AppColors.colorBlack1,
-      ),
+          borderRadius: BorderRadius.circular(10.0),
+          color: Colors.white,
+          boxShadow: AppColors.shadowWidget),
       child: Column(children: [
         const Align(
           alignment: Alignment.center,
@@ -58,8 +58,8 @@ class DialogChangePassword extends StatelessWidget {
               child: CustomButton(
                 text: 'Cancle',
                 onTap: () => Get.back(),
-                backgroundColor: AppColors.colorBlack1,
-                color: Colors.purple,
+                backgroundColor: Colors.white,
+                color: Colors.blue,
               ),
             ),
             const SizedBox(width: 10.0),

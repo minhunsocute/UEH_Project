@@ -44,4 +44,45 @@ class FakeData {
     Colors.white,
     Colors.pink
   ];
+  static const List<int> topData = [6, 5, 4, 3, 2, 1];
 }
+
+List<Map<String, dynamic>> listLessons = [
+  {
+    'title': 'She is polite and quite',
+    'hour': 2,
+    'minute': 30,
+    'check': true,
+  },
+  {
+    'title': 'What is he like',
+    'hour': 5,
+    'minute': 30,
+    'check': false,
+  },
+  {
+    'title': 'UI/UX Designer',
+    'hour': 2,
+    'minute': 30,
+    'check': false,
+  },
+  {
+    'title': 'Machine Learning ',
+    'hour': 1,
+    'minute': 30,
+    'check': false,
+  },
+  {
+    'title': 'Information Technology',
+    'hour': 6,
+    'minute': 30,
+    'check': false,
+  },
+];
+
+List<String> listSkillImprove = [
+  'Coding Skill',
+  'Interview Skill',
+  'Design Skill',
+  'Data Design Skill',
+];

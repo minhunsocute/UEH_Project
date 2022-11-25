@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:ueh_project/features/staff/calender_screen/screens/calender_screen.dart';
+import 'package:ueh_project/features/staff/calender_project_view_screen/screens/calender_screen.dart';
 import 'package:ueh_project/features/staff/home_screen/screens/home_screen.dart';
 import 'package:ueh_project/features/staff/skill_screen.dart/screens/skill_screen.dart';
 
